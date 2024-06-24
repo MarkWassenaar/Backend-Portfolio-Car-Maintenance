@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "description": "Oil Change"
+  },
+  {
+    "id": 2,
+    "description": "Tire Rotation"
+  },
+  {
+    "id": 3,
+    "description": "Brake Inspection"
+  },
+  {
+    "id": 4,
+    "description": "Battery Replacement"
+  },
+  {
+    "id": 5,
+    "description": "Engine Tune-Up"
+  },
+  {
+    "id": 6,
+    "description": "Transmission Check"
+  },
+  {
+    "id": 7,
+    "description": "AC Service"
+  },
+  {
+    "id": 8,
+    "description": "Wheel Alignment"
+  },
+  {
+    "id": 9,
+    "description": "Exhaust Repair"
+  },
+  {
+    "id": 10,
+    "description": "Suspension Repair"
+  }
+]

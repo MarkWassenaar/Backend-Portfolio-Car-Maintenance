@@ -45,12 +45,13 @@ model Car {
 }
 
 model UserJob {
-  id     Int   @id @default(autoincrement())
-  userId Int
-  jobId  Int
-  user   User  @relation(fields: [userId], references: [id])
-  job    Job   @relation(fields: [jobId], references: [id])
-  Bid    Bid[]
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  jobId       Int
+  user        User     @relation(fields: [userId], references: [id])
+  job         Job      @relation(fields: [jobId], references: [id])
+  Bid         Bid[]
+  lastService DateTime
 }
 
 model Bid {
@@ -59,4 +60,5 @@ model Bid {
   garage    Garage  @relation(fields: [garageId], references: [id])
   userJobId Int
   userJob   UserJob @relation(fields: [userJobId], references: [id])
+  accepted  Boolean
 }

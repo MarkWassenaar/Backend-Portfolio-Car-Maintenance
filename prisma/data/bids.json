@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "garageId": 1,
+    "userJobId": 1,
+    "accepted": true
+  },
+  {
+    "id": 2,
+    "garageId": 2,
+    "userJobId": 2,
+    "accepted": false
+  },
+  {
+    "id": 3,
+    "garageId": 3,
+    "userJobId": 3,
+    "accepted": true
+  },
+  {
+    "id": 4,
+    "garageId": 4,
+    "userJobId": 4,
+    "accepted": false
+  },
+  {
+    "id": 5,
+    "garageId": 5,
+    "userJobId": 5,
+    "accepted": true
+  },
+  {
+    "id": 6,
+    "garageId": 1,
+    "userJobId": 6,
+    "accepted": false
+  },
+  {
+    "id": 7,
+    "garageId": 2,
+    "userJobId": 7,
+    "accepted": true
+  },
+  {
+    "id": 8,
+    "garageId": 3,
+    "userJobId": 8,
+    "accepted": false
+  },
+  {
+    "id": 9,
+    "garageId": 4,
+    "userJobId": 9,
+    "accepted": true
+  },
+  {
+    "id": 10,
+    "garageId": 5,
+    "userJobId": 10,
+    "accepted": false
+  },
+  {
+    "id": 11,
+    "garageId": 1,
+    "userJobId": 1,
+    "accepted": true
+  },
+  {
+    "id": 12,
+    "garageId": 2,
+    "userJobId": 2,
+    "accepted": false
+  },
+  {
+    "id": 13,
+    "garageId": 3,
+    "userJobId": 3,
+    "accepted": true
+  },
+  {
+    "id": 14,
+    "garageId": 4,
+    "userJobId": 4,
+    "accepted": false
+  }
+]
