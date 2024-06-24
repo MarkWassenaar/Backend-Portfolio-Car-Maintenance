@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  username String    @unique
+  password String
+  Car      Car[]
+  UserJob  UserJob[]
+}
+
+model Garage {
+  id   Int    @id @default(autoincrement())
+  name String
+  Bid  Bid[]
+}
+
+model Job {
+  id          Int       @id @default(autoincrement())
+  description String
+  UserJob     UserJob[]
+}
+
+model Car {
+  id           Int     @id @default(autoincrement())
+  make         String
+  model        String
+  licenseplate String
+  year         Int
+  img          String?
+  userId       Int
+  user         User    @relation(fields: [userId], references: [id])
+}
+
+model UserJob {
+  id     Int   @id @default(autoincrement())
+  userId Int
+  jobId  Int
+  user   User  @relation(fields: [userId], references: [id])
+  job    Job   @relation(fields: [jobId], references: [id])
+  Bid    Bid[]
+}
+
+model Bid {
+  id        Int     @id @default(autoincrement())
+  garageId  Int
+  garage    Garage  @relation(fields: [garageId], references: [id])
+  userJobId Int
+  userJob   UserJob @relation(fields: [userJobId], references: [id])
+}
