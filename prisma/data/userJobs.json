@@ -1,61 +1,61 @@
 [
   {
     "id": 1,
-    "userId": 1,
+    "carId": 1,
     "jobId": 1,
     "lastService": "2024-01-10T08:00:00Z"
   },
   {
     "id": 2,
-    "userId": 1,
+    "carId": 2,
     "jobId": 2,
     "lastService": "2024-02-15T08:00:00Z"
   },
   {
     "id": 3,
-    "userId": 1,
+    "carId": 1,
     "jobId": 3,
     "lastService": "2024-03-20T08:00:00Z"
   },
   {
     "id": 4,
-    "userId": 2,
+    "carId": 3,
     "jobId": 4,
     "lastService": "2024-01-05T08:00:00Z"
   },
   {
     "id": 5,
-    "userId": 2,
+    "carId": 3,
     "jobId": 5,
     "lastService": "2024-02-10T08:00:00Z"
   },
   {
     "id": 6,
-    "userId": 3,
+    "carId": 4,
     "jobId": 6,
     "lastService": "2024-01-25T08:00:00Z"
   },
   {
     "id": 7,
-    "userId": 3,
+    "carId": 4,
     "jobId": 7,
     "lastService": "2024-02-20T08:00:00Z"
   },
   {
     "id": 8,
-    "userId": 3,
+    "carId": 4,
     "jobId": 8,
     "lastService": "2024-03-15T08:00:00Z"
   },
   {
     "id": 9,
-    "userId": 3,
+    "carId": 2,
     "jobId": 9,
     "lastService": "2024-04-10T08:00:00Z"
   },
   {
     "id": 10,
-    "userId": 3,
+    "carId": 1,
     "jobId": 10,
     "lastService": "2024-05-05T08:00:00Z"
   }
