@@ -3,84 +3,98 @@
     "id": 1,
     "garageId": 1,
     "userJobId": 1,
-    "accepted": true
+    "accepted": false,
+    "amount": 300
   },
   {
     "id": 2,
     "garageId": 2,
     "userJobId": 2,
-    "accepted": false
+    "accepted": false,
+    "amount": 250
   },
   {
     "id": 3,
     "garageId": 3,
     "userJobId": 3,
-    "accepted": true
+    "accepted": true,
+    "amount": 350
   },
   {
     "id": 4,
     "garageId": 4,
     "userJobId": 4,
-    "accepted": false
+    "accepted": false,
+    "amount": 110
   },
   {
     "id": 5,
     "garageId": 5,
     "userJobId": 5,
-    "accepted": true
+    "accepted": true,
+    "amount": 220
   },
   {
     "id": 6,
     "garageId": 1,
     "userJobId": 6,
-    "accepted": false
+    "accepted": false,
+    "amount": 430
   },
   {
     "id": 7,
     "garageId": 2,
     "userJobId": 7,
-    "accepted": true
+    "accepted": true,
+    "amount": 420
   },
   {
     "id": 8,
     "garageId": 3,
     "userJobId": 8,
-    "accepted": false
+    "accepted": false,
+    "amount": 180
   },
   {
     "id": 9,
     "garageId": 4,
     "userJobId": 9,
-    "accepted": true
+    "accepted": true,
+    "amount": 200
   },
   {
     "id": 10,
     "garageId": 5,
     "userJobId": 10,
-    "accepted": false
+    "accepted": false,
+    "amount": 680
   },
   {
     "id": 11,
-    "garageId": 1,
+    "garageId": 2,
     "userJobId": 1,
-    "accepted": true
+    "accepted": true,
+    "amount": 400
   },
   {
     "id": 12,
-    "garageId": 2,
+    "garageId": 1,
     "userJobId": 2,
-    "accepted": false
+    "accepted": false,
+    "amount": 300
   },
   {
     "id": 13,
-    "garageId": 3,
+    "garageId": 4,
     "userJobId": 3,
-    "accepted": true
+    "accepted": false,
+    "amount": 300
   },
   {
     "id": 14,
-    "garageId": 4,
+    "garageId": 3,
     "userJobId": 4,
-    "accepted": false
+    "accepted": false,
+    "amount": 300
   }
 ]

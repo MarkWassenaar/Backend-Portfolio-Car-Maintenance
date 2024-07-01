@@ -1,42 +1,52 @@
 [
   {
     "id": 1,
-    "description": "Oil Change"
+    "description": "Oil Change",
+    "interval": 6
   },
   {
     "id": 2,
-    "description": "Tire Rotation"
+    "description": "Tire Rotation",
+    "interval": 6
   },
   {
     "id": 3,
-    "description": "Brake Inspection"
+    "description": "Brake Inspection",
+    "interval": 6
   },
   {
     "id": 4,
-    "description": "Battery Replacement"
+    "description": "Battery Replacement",
+    "interval": 48
   },
   {
     "id": 5,
-    "description": "Engine Tune-Up"
+    "description": "Engine Tune-Up",
+    "interval": 12
   },
   {
     "id": 6,
-    "description": "Transmission Check"
+    "description": "Transmission Check",
+    "interval": 24
   },
   {
     "id": 7,
-    "description": "AC Service"
+    "description": "AC Service",
+    "interval": 24
   },
   {
     "id": 8,
-    "description": "Wheel Alignment"
+    "description": "Wheel Alignment",
+    "interval": 12
   },
   {
     "id": 9,
-    "description": "Exhaust Repair"
+    "description": "Exhaust Repair",
+    "interval": 12
   },
   {
     "id": 10,
-    "description": "Suspension Repair"
+    "description": "Suspension Repair",
+    "interval": 12
   }
 ]

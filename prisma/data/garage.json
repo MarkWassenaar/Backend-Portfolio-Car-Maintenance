@@ -1,22 +1,32 @@
 [
   {
     "id": 1,
-    "name": "FastFix Garage"
+    "name": "FastFix Garage",
+    "username": "fastfix@garage.com",
+    "password": "garage"
   },
   {
     "id": 2,
-    "name": "QuickRepair Auto"
+    "name": "QuickRepair Auto",
+    "username": "quickrepair@garage.com",
+    "password": "garage"
   },
   {
     "id": 3,
-    "name": "Speedy Service Station"
+    "name": "Speedy Service Station",
+    "username": "speedyservice@garage.com",
+    "password": "garage"
   },
   {
     "id": 4,
-    "name": "Reliable Repairs"
+    "name": "Reliable Repairs",
+    "username": "reliablerepairs@garage.com",
+    "password": "garage"
   },
   {
     "id": 5,
-    "name": "TopCare Garage"
+    "name": "TopCare Garage",
+    "username": "topcare@garage.com",
+    "password": "garage"
   }
 ]

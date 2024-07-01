@@ -21,15 +21,18 @@ model User {
 }
 
 model Garage {
-  id   Int    @id @default(autoincrement())
-  name String
-  Bid  Bid[]
+  id       Int    @id @default(autoincrement())
+  name     String
+  username String @unique
+  password String
+  Bid      Bid[]
 }
 
 model Job {
   id          Int       @id @default(autoincrement())
   description String
   UserJob     UserJob[]
+  interval    Int
 }
 
 model Car {
@@ -59,6 +62,7 @@ model Bid {
   garageId  Int
   garage    Garage  @relation(fields: [garageId], references: [id])
   userJobId Int
-  userJob   UserJob @relation(fields: [userJobId], references: [id])
+  userJob   UserJob @relation(fields: [userJobId], references: [id], onDelete: Cascade)
   accepted  Boolean
+  amount    Int
 }
