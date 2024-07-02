@@ -77,6 +77,95 @@ app.get("/jobs", async (req, res) => {
   res.send(allJobs);
 });
 
+app.get("/myuserjobs", AuthGarageMiddleware, async (req: AuthRequest, res) => {
+  const myJobs = await prisma.userJob.findMany({
+    include: {
+      Bid: {
+        where: {
+          garageId: req.userId,
+        },
+      },
+      car: { include: { user: { select: { username: true } } } },
+      job: true,
+    },
+  });
+  res.send(myJobs);
+});
+
+const newBidValidator = z.object({
+  garageId: z.number().int().positive(),
+  amount: z.number().int().positive(),
+});
+
+app.patch(
+  "/userJobs/:userJobId/bids/:bidId",
+  AuthGarageMiddleware,
+  async (req: AuthRequest, res) => {
+    try {
+      const idOfUserJob = Number(req.params.userJobId);
+      const idOfBid = Number(req.params.bidId);
+      const body = req.body;
+
+      if (isNaN(idOfUserJob)) {
+        res.status(400).send();
+        return;
+      }
+
+      if (isNaN(idOfBid)) {
+        res.status(400).send();
+        return;
+      }
+
+      const bidToFind = await prisma.bid.findUnique({
+        where: { id: idOfBid },
+      });
+      if (bidToFind === null) {
+        return res.status(404).send({ message: "Bid not found" });
+      }
+      if (bidToFind.garageId !== body.garageId) return res.status(401);
+
+      const updatedBid = await prisma.bid.update({
+        where: { id: idOfBid },
+        data: { amount: body.amount },
+      });
+      res.send(updatedBid);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ message: "Something went wrong" });
+    }
+  }
+);
+
+app.post(
+  "/userJobs/:id/bids",
+  AuthGarageMiddleware,
+  async (req: AuthRequest, res) => {
+    try {
+      const idOfUserJob = Number(req.params.id);
+
+      if (isNaN(idOfUserJob)) {
+        res.status(400).send();
+        return;
+      }
+
+      const validation = newBidValidator.safeParse(req.body);
+      if (!validation.success) {
+        return res.status(400).send({ message: validation.error.errors });
+      }
+      const newBid = await prisma.bid.create({
+        data: {
+          ...validation.data,
+          userJobId: idOfUserJob,
+          accepted: false,
+        },
+      });
+      res.status(201).json(newBid);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ message: "Something went wrong" });
+    }
+  }
+);
 const newUserJobValidator = z
   .object({
     jobId: z.number().int().positive(),
@@ -97,10 +186,6 @@ app.post("/car/:id/job", AuthUserMiddleware, async (req: AuthRequest, res) => {
     if (!validation.success) {
       return res.status(400).send({ message: validation.error.errors });
     }
-
-    // if (!userId) {
-    //   return res.status(404).send({ message: "User not found" });
-    // }
 
     console.log(validation.data.lastService);
     const newUserJob = await prisma.userJob.create({
@@ -174,21 +259,45 @@ app.delete("/car/:id", AuthUserMiddleware, async (req: AuthRequest, res) => {
   res.status(200).send({ message: "Car was deleted" });
 });
 
-app.delete("/userJob/:id", AuthUserMiddleware, async (req, res) => {
-  try {
-    const userJobId = Number(req.params.id);
+app.delete(
+  "/userJob/:id",
+  AuthUserMiddleware,
+  async (req: AuthRequest, res) => {
+    try {
+      const userJobId = Number(req.params.id);
 
-    if (isNaN(userJobId)) {
-      return res.status(400).send({ message: "Invalid job ID" });
+      if (isNaN(userJobId)) {
+        return res.status(400).send({ message: "Invalid job ID" });
+      }
+
+      const deletedJob = await prisma.userJob.delete({
+        where: {
+          id: userJobId,
+        },
+      });
+
+      res.status(200).send(deletedJob);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ message: "Something went wrong" });
+    }
+  }
+);
+
+app.delete("/bid/:id", AuthGarageMiddleware, async (req: AuthRequest, res) => {
+  try {
+    const bidId = Number(req.params.id);
+
+    if (isNaN(bidId)) {
+      return res.status(400).send({ message: "Invalid bid Id" });
     }
 
-    const deletedJob = await prisma.userJob.delete({
+    const deleteBid = await prisma.bid.delete({
       where: {
-        id: userJobId,
+        id: bidId,
       },
     });
-
-    res.status(200).json(deletedJob);
+    res.status(200).send(deleteBid);
   } catch (error) {
     console.error(error);
     res.status(500).send({ message: "Something went wrong" });
@@ -213,7 +322,6 @@ app.patch("/bid/:id/accept", AuthUserMiddleware, async (req, res) => {
       },
     });
 
-    // If accepting, mark all other bids for the same job as not accepted
     if (accept) {
       await prisma.bid.updateMany({
         where: {

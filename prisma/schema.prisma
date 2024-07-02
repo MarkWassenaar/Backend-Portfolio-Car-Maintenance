@@ -63,6 +63,6 @@ model Bid {
   garage    Garage  @relation(fields: [garageId], references: [id])
   userJobId Int
   userJob   UserJob @relation(fields: [userJobId], references: [id], onDelete: Cascade)
-  accepted  Boolean
+  accepted  Boolean @default(false)
   amount    Int
 }
