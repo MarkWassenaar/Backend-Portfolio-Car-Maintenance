@@ -2,16 +2,19 @@
   {
     "id": 1,
     "username": "Swen",
-    "password": "SwenSwenSwen"
+    "password": "SwenSwenSwen",
+    "phonenumber": "06 27225318"
   },
   {
     "id": 2,
     "username": "Mark",
-    "password": "MarkMarkMark"
+    "password": "MarkMarkMark",
+    "phonenumber": "06 10441005"
   },
   {
     "id": 3,
     "username": "Brandon",
-    "password": "BrandonBrandonBrandon"
+    "password": "BrandonBrandonBrandon",
+    "phonenumber": "06 ARUBA"
   }
 ]

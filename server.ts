@@ -77,6 +77,19 @@ app.get("/jobs", async (req, res) => {
   res.send(allJobs);
 });
 
+app.get("/alluserjobs", async (req, res) => {
+  const allJobs = await prisma.userJob.findMany({
+    include: {
+      Bid: true,
+      car: {
+        include: { user: { select: { username: true, phonenumber: true } } },
+      },
+      job: true,
+    },
+  });
+  res.send(allJobs);
+});
+
 app.get("/myuserjobs", AuthGarageMiddleware, async (req: AuthRequest, res) => {
   const myJobs = await prisma.userJob.findMany({
     include: {
@@ -85,7 +98,9 @@ app.get("/myuserjobs", AuthGarageMiddleware, async (req: AuthRequest, res) => {
           garageId: req.userId,
         },
       },
-      car: { include: { user: { select: { username: true } } } },
+      car: {
+        include: { user: { select: { username: true, phonenumber: true } } },
+      },
       job: true,
     },
   });
@@ -346,6 +361,7 @@ app.patch("/bid/:id/accept", AuthUserMiddleware, async (req, res) => {
 const registerValidator = z.object({
   username: z.string().min(4),
   password: z.string().min(10),
+  phonenumber: z.string().min(7),
 });
 
 app.post("/register", async (req, res) => {
@@ -358,6 +374,7 @@ app.post("/register", async (req, res) => {
         data: {
           username: bodyFromRequest.username,
           password: bodyFromRequest.password,
+          phonenumber: bodyFromRequest.phonenumber,
         },
       });
       res.status(201).send(newUser);
