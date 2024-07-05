@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import express, { json } from "express";
 import { PrismaClient } from "@prisma/client";
 import { toToken } from "./auth/jwt";
@@ -9,12 +10,20 @@ import {
 import cors from "cors";
 import { ZodError, z } from "zod";
 
+dotenv.config();
+
 const app = express();
+const port = process.env.PORT || 3001;
+
 app.use(cors());
-const port = 3001;
 app.use(json());
 
 const prisma = new PrismaClient();
+
+app.get("/greeting", (req, res) => {
+  const messageFromEnv = process.env.MESSAGE;
+  res.send(messageFromEnv);
+});
 
 app.get("/", (req, res) => {
   res.send("Hello world!");
