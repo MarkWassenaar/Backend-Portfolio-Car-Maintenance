@@ -101,12 +101,15 @@ app.get("/alluserjobs", async (req, res) => {
 
 app.get("/myuserjobs", AuthGarageMiddleware, async (req: AuthRequest, res) => {
   const myJobs = await prisma.userJob.findMany({
-    include: {
+    where: {
       Bid: {
-        where: {
+        some: {
           garageId: req.userId,
         },
       },
+    },
+    include: {
+      Bid: true,
       car: {
         include: { user: { select: { username: true, phonenumber: true } } },
       },
@@ -116,10 +119,11 @@ app.get("/myuserjobs", AuthGarageMiddleware, async (req: AuthRequest, res) => {
   res.send(myJobs);
 });
 
-const newBidValidator = z.object({
-  garageId: z.number().int().positive(),
-  amount: z.number().int().positive(),
-});
+const newBidValidator = z
+  .object({
+    amount: z.number().int().positive(),
+  })
+  .strict();
 
 app.patch(
   "/userJobs/:userJobId/bids/:bidId",
@@ -146,11 +150,16 @@ app.patch(
       if (bidToFind === null) {
         return res.status(404).send({ message: "Bid not found" });
       }
-      if (bidToFind.garageId !== body.garageId) return res.status(401);
+      if (bidToFind.garageId !== req.userId) return res.status(401);
+
+      const validation = newBidValidator.safeParse(req.body);
+      if (!validation.success) {
+        return res.status(400).send({ message: validation.error.errors });
+      }
 
       const updatedBid = await prisma.bid.update({
         where: { id: idOfBid },
-        data: { amount: body.amount },
+        data: { amount: validation.data.amount },
       });
       res.send(updatedBid);
     } catch (error) {
@@ -164,6 +173,9 @@ app.post(
   "/userJobs/:id/bids",
   AuthGarageMiddleware,
   async (req: AuthRequest, res) => {
+    if (!req.userId) {
+      return res.status(500).send({ message: "Something went wrong!" });
+    }
     try {
       const idOfUserJob = Number(req.params.id);
 
@@ -179,6 +191,7 @@ app.post(
       const newBid = await prisma.bid.create({
         data: {
           ...validation.data,
+          garageId: req.userId,
           userJobId: idOfUserJob,
           accepted: false,
         },
@@ -477,6 +490,26 @@ app.post("/logingarage", async (req, res) => {
     res
       .status(400)
       .send({ message: "'username' and 'password' are required!" });
+  }
+});
+
+app.get("/garage/me", AuthGarageMiddleware, async (req: AuthRequest, res) => {
+  if (!req.userId) {
+    return res.status(500).send({ message: "Something went wrong" });
+  }
+  try {
+    const me = await prisma.garage.findUnique({
+      where: {
+        id: req.userId,
+      },
+    });
+    if (!me) {
+      return res.status(404).send();
+    }
+    res.send(me);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({ message: "Something went wrong" });
   }
 });
 
