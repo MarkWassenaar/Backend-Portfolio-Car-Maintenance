@@ -42,7 +42,8 @@ model Car {
   model        String
   licenseplate String
   year         Int
-  img          String?
+  color        String
+  // img          String?
   userId       Int
   user         User      @relation(fields: [userId], references: [id])
   UserJob      UserJob[]

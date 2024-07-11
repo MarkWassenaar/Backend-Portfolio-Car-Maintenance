@@ -5,7 +5,7 @@
     "model": "Camry",
     "licenseplate": "AB-C12-3",
     "year": 2018,
-    "img": "https://pictures.dealer.com/c/chicagonorthsidetoyota/1780/307f72aa79a9355d9d679241d0c7c0e1x.jpg?impolicy=downsize_bkpt&w=2500",
+    "color": "blauw",
     "userId": 1
   },
   {
@@ -14,7 +14,7 @@
     "model": "Civic",
     "licenseplate": "DE-F45-6",
     "year": 2020,
-    "img": "https://images.dealer.com/ddc/vehicles/2020/Honda/Civic%20Si/Sedan/perspective/front-left/2020_76.png",
+    "color": "rood",
     "userId": 1
   },
   {
@@ -23,7 +23,7 @@
     "model": "Focus",
     "licenseplate": "GH-I78-9",
     "year": 2019,
-    "img": "https://purepng.com/public/uploads/large/purepng.com-ford-focus-st-yellow-carcarvehicletransportford-961524664016apjao.png",
+    "color": "blauw",
     "userId": 2
   },
   {
@@ -32,7 +32,7 @@
     "model": "Malibu",
     "licenseplate": "JK-L01-2",
     "year": 2021,
-    "img": "https://platform.cstatic-images.com/in/v2/stock_photos/d1cab769-3224-4e57-8be6-b30a0b1ab73b/0d932f22-7cdf-4a9a-8dc3-5665ca68f9e4.png",
+    "color": "oranje",
     "userId": 3
   }
 ]

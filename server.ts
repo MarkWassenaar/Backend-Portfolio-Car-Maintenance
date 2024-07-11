@@ -242,7 +242,7 @@ const newCarValidator = z
   .object({
     make: z.string(),
     model: z.string(),
-    img: z.string().url().optional(),
+    color: z.string(),
     licenseplate: z.string().min(1),
     year: z.number().int().positive(),
   })
