@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "make": "Toyota",
-    "model": "Camry",
+    "make": "TOYOTA",
+    "model": "CAMRY",
     "licenseplate": "AB-C12-3",
     "year": 2018,
     "color": "blauw",
@@ -10,8 +10,8 @@
   },
   {
     "id": 2,
-    "make": "Honda",
-    "model": "Civic",
+    "make": "HONDA",
+    "model": "CIVIC",
     "licenseplate": "DE-F45-6",
     "year": 2020,
     "color": "rood",
@@ -19,8 +19,8 @@
   },
   {
     "id": 3,
-    "make": "Ford",
-    "model": "Focus",
+    "make": "FORD",
+    "model": "FOCUS",
     "licenseplate": "GH-I78-9",
     "year": 2019,
     "color": "blauw",
@@ -28,8 +28,8 @@
   },
   {
     "id": 4,
-    "make": "Chevrolet",
-    "model": "Malibu",
+    "make": "CHEVROLET",
+    "model": "MALIBU",
     "licenseplate": "JK-L01-2",
     "year": 2021,
     "color": "oranje",
